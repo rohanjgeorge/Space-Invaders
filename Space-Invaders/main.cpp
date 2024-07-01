@@ -47,6 +47,23 @@ int main()
         square.setPosition(100, 100); // Set position
         window.draw(square);
 
+        sf::Texture outscal_texture;
+        outscal_texture.loadFromFile("assets/textures/outscal_logo.png");
+
+        sf::Sprite outscal_sprite;
+        outscal_sprite.setTexture(outscal_texture);
+
+        outscal_sprite.setPosition(600, 100); // Position
+        outscal_sprite.setRotation(45); // Rotation in degrees
+        outscal_sprite.setScale(0.5, 0.5); // Scale factor
+
+        window.draw(outscal_sprite);
+
+        sf::Font font;
+        font.loadFromFile("assets/fonts/OpenSans.ttf");
+        sf::Text text("SFML is Awesome!", font, 50);
+        text.setFillColor(sf::Color::White);
+        window.draw(text);
 
         // Display whatever you draw
         window.display();
