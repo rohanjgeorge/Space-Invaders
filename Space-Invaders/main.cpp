@@ -22,8 +22,14 @@ public:
         player_score = newScore;
     };
 
+    sf::Vector2f getPosition() {
+        return position;
+    }
+
     void takeDamage();
-    void move();
+    void move() {
+        std::cout << "left";
+    }
     void shootBullets();
 };
 
@@ -36,7 +42,10 @@ int main()
     // Create a window object with specific dimensions and a title
     sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Window");
 
+    Player player;
+    player.player_texture.loadFromFile("assets/textures/player_ship.png");
 
+    player.player_sprite.setTexture(player.player_texture);
 
     while (window.isOpen()) {
         sf::Event event;
@@ -46,12 +55,23 @@ int main()
                 window.close();
         }
 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+
+            player.move();
+
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+
+            player.move();
+        }
 
         // Clear the window
         window.clear(sf::Color::Blue);
 
-        
 
+        player.player_sprite.setPosition(player.getPosition());
+        window.draw(player.player_sprite);
         
         // Display whatever you draw
         window.display();
