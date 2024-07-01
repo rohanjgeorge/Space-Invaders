@@ -8,7 +8,7 @@ private:
     int player_score = 0;
     int health = 5;
     sf::Vector2f position = sf::Vector2f(200.0f, 100.0f);
-    int movement_speed = 10;
+    int movement_speed = 2;
 
 public:
     sf::Texture player_texture;
@@ -22,13 +22,18 @@ public:
         player_score = newScore;
     };
 
+    int getMoveSpeed() {
+        return movement_speed;
+    }
+
     sf::Vector2f getPosition() {
         return position;
     }
 
     void takeDamage();
-    void move() {
-        std::cout << "left";
+    
+    void move(float offsetX) {
+        position.x += offsetX;
     }
     void shootBullets();
 };
@@ -57,13 +62,13 @@ int main()
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 
-            player.move();
+            player.move(-1.0f * player.getMoveSpeed());
 
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 
-            player.move();
+            player.move(1.0f * player.getMoveSpeed());
         }
 
         // Clear the window
