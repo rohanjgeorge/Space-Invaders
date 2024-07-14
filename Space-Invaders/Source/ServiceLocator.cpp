@@ -1,4 +1,5 @@
 #include "../Header/ServiceLocator.h"
+#include <iostream>
 
 ServiceLocator::ServiceLocator()
 {
@@ -16,6 +17,7 @@ ServiceLocator::~ServiceLocator()
 void ServiceLocator::createServices()
 {
 	graphic_service = new GraphicService();
+	
 	event_service = new EventService();
 }
 
