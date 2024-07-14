@@ -1,5 +1,6 @@
 #include"../Header/GameService.h"
 #include"../Header/GraphicService.h"
+#include <iostream>;
 
 void GameService::initialize()
 {
@@ -20,6 +21,7 @@ GameService::GameService()
 {
 	service_locator = nullptr;
 	game_window = nullptr;
+std::cout << "I was here";
 }
 
 GameService::~GameService()
@@ -35,6 +37,10 @@ void GameService::ignite()
 
 void GameService::update()
 {
+	//Process Events
+	service_locator->getEventService()->processEvents();
+
+	//Update Game Logic
 	service_locator->update();
 }
 
