@@ -41,6 +41,8 @@ public:
 
 int main()
 {
+    std::cout << "hello";
+    std::cout << "hello4";
     /*
 
     // Define the video mode (dimensions)
@@ -88,10 +90,11 @@ int main()
 
     return 0;
     */
-
+    std::cout << "hello 3";
     GameService* game_service = new GameService();; //create object
     game_service->ignite(); // this will 'ignite' or start the flow of our game
 
+    std::cout << "hello 2";
     // while the game is running we will update the game loop
     while (game_service->isRunning())
     {
