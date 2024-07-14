@@ -1,4 +1,5 @@
 #include "../Header/GraphicService.h"
+#include <iostream>
 
 void GraphicService::setVideoMode()
 {
@@ -48,7 +49,9 @@ bool GraphicService::isGameWindowOpen()
 
 sf::RenderWindow* GraphicService::getGameWindow()
 {
+    
     return game_window;
+
 }
 
 sf::Color GraphicService::getWindowColor()
