@@ -2,42 +2,6 @@
 #include <iostream>
 #include "./Header/GameService.h"
 
-class Player {
-
-private:
-
-    int player_score = 0;
-    int health = 5;
-    sf::Vector2f position = sf::Vector2f(200.0f, 100.0f);
-    int movement_speed = 2;
-
-public:
-    sf::Texture player_texture;
-    sf::Sprite player_sprite;
-    
-    int getScore() {
-        return player_score;
-    };
-
-    void setScore(int newScore) {
-        player_score = newScore;
-    };
-
-    int getMoveSpeed() {
-        return movement_speed;
-    }
-
-    sf::Vector2f getPosition() {
-        return position;
-    }
-
-    void takeDamage();
-    
-    void move(float offsetX) {
-        position.x += offsetX;
-    }
-    void shootBullets();
-};
 
 int main()
 {
