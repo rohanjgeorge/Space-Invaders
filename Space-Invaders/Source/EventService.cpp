@@ -40,3 +40,6 @@ bool EventService::pressedEscapeKey() { return game_event.key.code == sf::Keyboa
 bool EventService::isGameWindowOpen() { return game_window != nullptr; }
 
 bool EventService::gameWindowWasClosed() { return game_event.type == sf::Event::Closed; }
+
+bool EventService::pressedLeftKey() { return game_event.key.code == sf::Keyboard::Left; }
+bool EventService::pressedRightKey() { return game_event.key.code == sf::Keyboard::Right; }
