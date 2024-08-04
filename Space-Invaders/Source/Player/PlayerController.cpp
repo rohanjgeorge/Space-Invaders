@@ -1,6 +1,9 @@
 #include "../../Header/Player/PlayerController.h"
-#include "../../Header/EventService.h"
-#include "../../Header/ServiceLocator.h"
+#include "../../Header/Event/EventService.h"
+#include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Player/PlayerModel.h"
+#include "../../Header/Player/PlayerView.h"
+
 #include<algorithm>
 
 PlayerController::PlayerController()
@@ -21,6 +24,11 @@ void PlayerController::initialize()
 
 	//This will give an error right now since we haven't included the controller in the view.
 	player_view->initialize(this); // 'this' refers to the class we are currently inside
+}
+
+void PlayerController::update() {
+	processPlayerInput();
+	player_view->update();
 }
 
 void PlayerController::render()
