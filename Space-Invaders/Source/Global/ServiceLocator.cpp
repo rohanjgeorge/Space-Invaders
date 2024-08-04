@@ -1,4 +1,4 @@
-#include "../Header/ServiceLocator.h"
+#include "../../Header/Global/ServiceLocator.h"
 #include <iostream>
 
 ServiceLocator::ServiceLocator()

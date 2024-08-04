@@ -1,10 +1,11 @@
 #pragma once
-#include "../../Header/Player/PlayerController.h"
+
+class PlayerController;;
 
 class PlayerService
 {
 private:
-	PlayerController* player_controller;
+	PlayerController *player_controller;
 
 public:
 	PlayerService();

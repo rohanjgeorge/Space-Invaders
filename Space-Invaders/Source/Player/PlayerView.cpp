@@ -1,5 +1,6 @@
 #include "../../Header/Player/PlayerView.h"
-#include "../../Header/ServiceLocator.h"
+#include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Player/PlayerController.h"
 
 PlayerView::PlayerView() {}
 PlayerView::~PlayerView() {}
@@ -14,7 +15,7 @@ void PlayerView::initialize(PlayerController* controller)
 void PlayerView::initializePlayerSprite() {
 	if (player_texture.loadFromFile(player_texture_path)) {
 		player_sprite.setTexture(player_texture);
-		scalePlayerSprite;
+		scalePlayerSprite();
 	}
 }
 
