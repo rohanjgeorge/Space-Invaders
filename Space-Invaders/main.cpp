@@ -5,6 +5,8 @@
 
 int main()
 {
+
+    using namespace Main;
     /*
 
     // Define the video mode (dimensions)

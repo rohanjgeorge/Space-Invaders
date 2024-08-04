@@ -1,57 +1,64 @@
 #include"../../Header/Main/GameService.h"
 #include"../../Header/Graphic/GraphicService.h"
+#include"../../Header/Event/EventService.h"
+#include "../../Header/Global/ServiceLocator.h"
 #include <iostream>
 
-void GameService::initialize()
-{
-	service_locator->initialize();
-	initializeVariables();
-}
+namespace Main {
 
-void GameService::initializeVariables()
-{
-	game_window = service_locator->getGraphicService()->getGameWindow();
-}
+	using namespace Global;
 
-void GameService::destroy()
-{
-	//cleanup resources
-}
+	void GameService::initialize()
+	{
+		service_locator->initialize();
+		initializeVariables();
+	}
 
-GameService::GameService()
-{
-	service_locator = nullptr;
-	game_window = nullptr;
-}
+	void GameService::initializeVariables()
+	{
+		game_window = service_locator->getGraphicService()->getGameWindow();
+	}
 
-GameService::~GameService()
-{
-	destroy();
-}
+	void GameService::destroy()
+	{
+		//cleanup resources
+	}
 
-void GameService::ignite()
-{
-	service_locator = ServiceLocator::getInstance();
-	initialize();
-}
+	GameService::GameService()
+	{
+		service_locator = nullptr;
+		game_window = nullptr;
+	}
 
-void GameService::update()
-{
-	//Process Events
-	service_locator->getEventService()->processEvents();
+	GameService::~GameService()
+	{
+		destroy();
+	}
 
-	//Update Game Logic
-	service_locator->update();
-}
+	void GameService::ignite()
+	{
+		service_locator = Global::ServiceLocator::getInstance();
+		initialize();
+	}
 
-void GameService::render()
-{
-	game_window->clear(service_locator->getGraphicService()->getWindowColor());
-	service_locator->render();
-	game_window->display();
-}
+	void GameService::update()
+	{
+		//Process Events
+		service_locator->getEventService()->processEvents();
 
-bool GameService::isRunning()
-{
-	return service_locator->getGraphicService()->isGameWindowOpen();
+		//Update Game Logic
+		service_locator->update();
+	}
+
+	void GameService::render()
+	{
+		game_window->clear(service_locator->getGraphicService()->getWindowColor());
+		service_locator->render();
+		game_window->display();
+	}
+
+	bool GameService::isRunning()
+	{
+		return service_locator->getGraphicService()->isGameWindowOpen();
+	}
 }
