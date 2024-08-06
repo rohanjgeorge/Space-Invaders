@@ -1,4 +1,5 @@
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/UI/UIService.h"
 #include <iostream>
 
 namespace Global {
@@ -7,6 +8,7 @@ namespace Global {
 	using namespace Time;
 	using namespace Event;
 	using namespace Player;
+	using namespace UI;
 
 	ServiceLocator::ServiceLocator()
 	{
@@ -14,6 +16,7 @@ namespace Global {
 		time_service = nullptr;
 		event_service = nullptr;
 		player_service = nullptr;
+		ui_service = nullptr;
 		createServices();
 	}
 
@@ -33,6 +36,8 @@ namespace Global {
 
 		player_service = new PlayerService();
 
+		ui_service = new UIService();
+
 	}
 
 	void ServiceLocator::clearAllServices()
@@ -41,6 +46,7 @@ namespace Global {
 		delete (time_service);
 		delete(event_service);
 		delete(player_service);
+		delete(ui_service);
 
 	}
 
@@ -56,6 +62,7 @@ namespace Global {
 		time_service->initialize();
 		event_service->initialize();
 		player_service->initialize();
+		ui_service->initialize();
 
 	}
 
@@ -65,6 +72,7 @@ namespace Global {
 		time_service->update();
 		event_service->update();
 		player_service->update();
+		ui_service->update();
 	}
 
 	void ServiceLocator::render()
@@ -86,4 +94,6 @@ namespace Global {
 	}
 
 	TimeService* ServiceLocator::getTimeService() { return time_service; }
+
+	UIService* ServiceLocator::getUIServiec() { return ui_service; }
 }

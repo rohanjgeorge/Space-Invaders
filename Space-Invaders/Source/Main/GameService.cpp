@@ -8,7 +8,7 @@ namespace Main {
 
 	using namespace Global;
 
-	GameState GameService::current_State = GameState::BOOT;
+	GameState GameService::current_state = GameState::BOOT;
 
 	void GameService::initialize()
 	{
