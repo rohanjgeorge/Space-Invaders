@@ -31,10 +31,12 @@ namespace UI
 
 	void UIService::update()
 	{
+		main_menu_controller->update();
 	}
 
 	void UIService::render()
 	{
+		main_menu_controller->render();
 	}
 
 	void UIService::initializeControllers()
