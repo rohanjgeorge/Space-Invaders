@@ -9,7 +9,7 @@ namespace Main {
 
 	enum class GameState {
 		BOOT,
-		Main_MENU,
+		MAIN_MENU,
 		GAMEPLAY
 	};
 
@@ -37,5 +37,6 @@ namespace Main {
 		bool isRunning();		// Checks if the game is currently running.
 		static void setGameState(GameState new_state);
 		static GameState getGameState();
+		void showMainMenu();
 	};
 }

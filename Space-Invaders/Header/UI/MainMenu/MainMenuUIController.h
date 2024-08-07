@@ -44,6 +44,8 @@ namespace UI
 			void scaleAllButttons();
 			void scaleButton(sf::Sprite* button_to_scale);
 			void positionButtons();
+			void processButtonInteractions();
+			bool clickedButton(sf::Sprite*, sf::Vector2f);
 
 		public:
 			MainMenuUIController();
@@ -51,6 +53,7 @@ namespace UI
 			void initialize();
 			void update();
 			void render();
+
 
 		};
 	}
