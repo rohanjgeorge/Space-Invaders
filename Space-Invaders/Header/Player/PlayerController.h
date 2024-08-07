@@ -8,6 +8,7 @@ namespace Player {
 
     class PlayerController
     {
+
     private:
         PlayerView* player_view;
         PlayerModel* player_model;
