@@ -22,7 +22,6 @@ namespace Enemy
 
 	void EnemyController::initialize()
 	{
-		std::cout << "inside enemy controller'";
 		enemy_model->initialize();
 		enemy_view->initialize(this); // we will discuss this soon
 	}
