@@ -22,7 +22,6 @@ namespace Enemy
 
 	void EnemyView::initializeEnemySprite()
 	{
-		std::cout << "initialized enemy sprite";
 		if (enemy_texture.loadFromFile(enemy_texture_path)) //check if the texture loaded
 		{
 			enemy_sprite.setTexture(enemy_texture); //set the sprite
