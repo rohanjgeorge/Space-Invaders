@@ -8,6 +8,7 @@
 #include "../../Header/Gameplay/GameplayService.h"
 #include "../../Header/Element/ElementService.h";
 #include "../../Header/Sound/SoundService.h";
+#include "../../header/Bullet/BulletService.h"
 
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
@@ -28,6 +29,7 @@ namespace Global {
         Gameplay::GameplayService* gameplay_service;
         Element::ElementService* element_service;
         Sound::SoundService* sound_service;
+        Bullet::BulletService* bullet_service;
         // - event_service: Manages event-related functionalities.
         // - graphic_service: Handles graphics-related tasks.
         // ..........................
@@ -63,5 +65,6 @@ namespace Global {
         Gameplay::GameplayService* getGameplayService();
         Element::ElementService* getElementService();
         Sound::SoundService* getSoundService();
+        Bullet::BulletService* getBulletService();
     };
 }
