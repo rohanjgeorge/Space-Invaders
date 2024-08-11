@@ -78,6 +78,9 @@
     <ClCompile Include="Source\Enemy\Controllers\ZapperController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Element\ElementService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Main\GameService.h">
@@ -141,6 +144,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Enemy\EnemyConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Element\ElementsService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
