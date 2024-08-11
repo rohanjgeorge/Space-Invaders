@@ -4,6 +4,7 @@
 namespace Enemy
 {
     class EnemyController;
+    enum class EnemyType;
 
     class EnemyView
     {

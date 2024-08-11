@@ -24,13 +24,15 @@ namespace Enemy
 	void EnemyController::initialize()
 	{
 		enemy_model->initialize();
-		enemy_view->initialize(this); // we will discuss this soon
+		enemy_model->setEnemyPosition(getRandomInitialPosition());
+		enemy_view->initialize(this);
 	}
 
 	void EnemyController::update()
 	{
 		move();
 		enemy_view->update();
+		handleOutOfBounds();
 	}
 
 	void EnemyController::render()
@@ -43,7 +45,17 @@ namespace Enemy
 		return enemy_model->getEnemyPosition();
 	}
 
-	void EnemyController::move()
+	EnemyState EnemyController::getEnemyState()
+	{
+		return enemy_model->getEnemyState();
+	}
+
+	EnemyType EnemyController::getEnemyType()
+	{
+		return enemy_model->getEnemyType();
+	}
+
+	/*void EnemyController::move()
 	{
 		switch (enemy_model->getMovementDirection())
 		{
@@ -59,8 +71,8 @@ namespace Enemy
 			moveDown();
 			break;
 		}
-	}
-		void EnemyController::moveRight()
+	}*/
+		/*void EnemyController::moveRight()
 		{
 			sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
 			currentPosition.x += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
@@ -73,40 +85,68 @@ namespace Enemy
 			else {
 				enemy_model->setEnemyPosition(currentPosition);
 			}
+		}*/
+
+		//void EnemyController::moveLeft()
+		//{
+		//	// Get current pos
+		//	// Move left by multiplying by speed and delta time
+		//	sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+		//	currentPosition.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+		//	//check for bounds
+		//	if (currentPosition.x <= enemy_model->left_most_position.x)
+		//	{
+		//		//if reached the left most pos
+		//		//start moving down
+		//		//set ref pos for the downwards movement
+		//		enemy_model->setMovementDirection(MovementDirection::DOWN);
+		//		enemy_model->setReferencePosition(currentPosition);
+		//	}
+		//	else enemy_model->setEnemyPosition(currentPosition);
+		//}
+
+		//void EnemyController::moveDown()
+		//{
+		//	sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+		//	currentPosition.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+		//	//check if enemy has moved the specified distance downwards
+		//	if (currentPosition.y >= enemy_model->getReferencePosition().y + enemy_model->vertical_travel_distance)
+		//	{
+		//		//check where to move them based on position
+		//		if (enemy_model->getReferencePosition().x <= enemy_model->left_most_position.x) enemy_model->setMovementDirection(MovementDirection::RIGHT);
+		//		else enemy_model->setMovementDirection(MovementDirection::LEFT);
+		//	}
+		//	else enemy_model->setEnemyPosition(currentPosition);
+		//}
+
+		sf::Vector2f EnemyController::getRandomInitialPosition()
+		{
+			// Calculate the distance between the leftmost and rightmost positions of the enemy.
+			float x_offset_distance = (std::rand() % static_cast<int>(enemy_model->right_most_position.x - enemy_model->left_most_position.x));
+
+			// Calculate the x position by adding the x offset distance to the leftmost position.
+			float x_position = enemy_model->left_most_position.x + x_offset_distance;
+
+			// The y position remains the same.
+			float y_position = enemy_model->left_most_position.y;
+
+			// Return the calculated position as a 2D vector.
+			return sf::Vector2f(x_position, y_position);
 		}
 
-		void EnemyController::moveLeft()
+		void EnemyController::handleOutOfBounds()
 		{
-			// Get current pos
-			// Move left by multiplying by speed and delta time
-			sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
-			currentPosition.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			sf::Vector2f enemyPosition = getEnemyPosition();
+			sf::Vector2u windowSize = ServiceLocator::getInstance()->getGraphicService()->getGameWindow()->getSize();
 
-			//check for bounds
-			if (currentPosition.x <= enemy_model->left_most_position.x)
+			// Destroy the enemy if it goes out of bounds.
+			if (enemyPosition.x < 0 || enemyPosition.x > windowSize.x ||
+				enemyPosition.y < 0 || enemyPosition.y > windowSize.y)
 			{
-				//if reached the left most pos
-				//start moving down
-				//set ref pos for the downwards movement
-				enemy_model->setMovementDirection(MovementDirection::DOWN);
-				enemy_model->setReferencePosition(currentPosition);
+				ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 			}
-			else enemy_model->setEnemyPosition(currentPosition);
-		}
-
-		void EnemyController::moveDown()
-		{
-			sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
-			currentPosition.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
-
-			//check if enemy has moved the specified distance downwards
-			if (currentPosition.y >= enemy_model->getReferencePosition().y + enemy_model->vertical_travel_distance)
-			{
-				//check where to move them based on position
-				if (enemy_model->getReferencePosition().x <= enemy_model->left_most_position.x) enemy_model->setMovementDirection(MovementDirection::RIGHT);
-				else enemy_model->setMovementDirection(MovementDirection::LEFT);
-			}
-			else enemy_model->setEnemyPosition(currentPosition);
 		}
 	
 }
