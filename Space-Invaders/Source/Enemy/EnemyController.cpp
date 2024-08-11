@@ -1,6 +1,7 @@
 #include "../../Header/Enemy/EnemyController.h"
 #include "../../Header/Enemy/EnemyView.h"
 #include "../../Header/Enemy/EnemyModel.h"
+#include "../../Header/Enemy/EnemyConfig.h"
 #include "../../Header/Global/ServiceLocator.h"
 #include <iostream>
 
@@ -8,10 +9,10 @@ namespace Enemy
 {
 	using namespace Global;
 
-	EnemyController::EnemyController()
+	EnemyController::EnemyController(EnemyType type)
 	{
 		enemy_view = new EnemyView();
-		enemy_model = new EnemyModel();
+		enemy_model = new EnemyModel(type);
 	}
 
 	EnemyController::~EnemyController()
@@ -46,15 +47,15 @@ namespace Enemy
 	{
 		switch (enemy_model->getMovementDirection())
 		{
-		case::Enemy::MovementDirection::LEFT:
+		case Enemy::MovementDirection::LEFT:
 			moveLeft();
 			break;
 
-		case::Enemy::MovementDirection::RIGHT:
+		case Enemy::MovementDirection::RIGHT:
 			moveRight();
 			break;
 
-		case::Enemy::MovementDirection::DOWN:
+		case Enemy::MovementDirection::DOWN:
 			moveDown();
 			break;
 		}

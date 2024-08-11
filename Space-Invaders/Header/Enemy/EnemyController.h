@@ -5,6 +5,7 @@ namespace Enemy
 {
     class EnemyView;
     class EnemyModel;
+    enum class EnemyType;
 
     class EnemyController
     {
@@ -19,7 +20,7 @@ namespace Enemy
         void moveDown();
 
     public:
-        EnemyController();
+        EnemyController(EnemyType type);
         virtual ~EnemyController();
 
         virtual void initialize();
