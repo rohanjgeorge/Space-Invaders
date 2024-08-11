@@ -156,6 +156,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source\Main\GameService.cpp" />
     <ClCompile Include="Source\Event\EventService.cpp" />
+    <ClCompile Include="Source\Sound\SoundService.cpp" />
     <ClCompile Include="Source\Time\TimeService.cpp" />
     <ClCompile Include="Source\UI\MainMenu\MainMenuUIController.cpp" />
     <ClCompile Include="Source\UI\UIService.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="Header\Player\PlayerModel.h" />
     <ClInclude Include="Header\Player\PlayerView.h" />
     <ClInclude Include="Header\Global\ServiceLocator.h" />
+    <ClInclude Include="Header\Sound\SoundService.h" />
     <ClInclude Include="Header\Time\TimeService.h" />
     <ClInclude Include="Header\UI\MainMenu\MainMenuUIController.h" />
     <ClInclude Include="Header\UI\UIService.h" />
