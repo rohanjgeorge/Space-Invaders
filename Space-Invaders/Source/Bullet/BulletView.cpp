@@ -62,7 +62,7 @@ namespace Bullet
 
 	void BulletView::render()
 	{
-		game_window.draw(bullet_sprite);
+		game_window->draw(bullet_sprite);
 	}
 
 }
