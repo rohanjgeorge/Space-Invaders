@@ -8,7 +8,6 @@ namespace Element
 		struct BunkerData
 		{
 			sf::Vector2f position;
-
 			BunkerData();
 			BunkerData(sf::Vector2f position);
 		};
