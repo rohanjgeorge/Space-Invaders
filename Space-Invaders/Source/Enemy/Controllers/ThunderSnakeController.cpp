@@ -35,11 +35,6 @@ namespace Enemy
             case Enemy::MovementDirection::RIGHT:
                 moveRight();
                 break;
-
-                // If the movement direction is DOWN
-            case Enemy::MovementDirection::DOWN:
-                moveDown();
-                break;
             }
         }
         void ThunderSnakeController::moveLeft()
