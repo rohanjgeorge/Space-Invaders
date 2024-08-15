@@ -20,6 +20,7 @@ namespace Enemy
             ~ZapperController();
 
             void initialize() override;
+            void fireBullet() override;
         };
     }
 }

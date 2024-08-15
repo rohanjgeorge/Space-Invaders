@@ -24,6 +24,7 @@ namespace Player {
         void initialize();
         void update();
         void render();
+        void fireBullet();
 
         sf::Vector2f getPlayerPosition();
     };
