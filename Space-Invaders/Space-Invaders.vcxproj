@@ -145,6 +145,8 @@
     <ClCompile Include="Source\Element\Bunker\BunkerView.cpp" />
     <ClCompile Include="Source\Element\ElementService.cpp" />
     <ClCompile Include="Source\Enemy\Controllers\SubZeroController.cpp" />
+    <ClCompile Include="Source\Enemy\Controllers\ThunderSnakeController.cpp" />
+    <ClCompile Include="Source\Enemy\Controllers\UFOController.cpp" />
     <ClCompile Include="Source\Enemy\Controllers\ZapperController.cpp" />
     <ClCompile Include="Source\Enemy\EnemyController.cpp" />
     <ClCompile Include="Source\Enemy\EnemyModel.cpp" />
@@ -169,6 +171,7 @@
     <ClCompile Include="Source\Powerups\Controllers\TripleLaserController.cpp" />
     <ClCompile Include="Source\Powerups\PowerupController.cpp" />
     <ClCompile Include="Source\Powerups\PowerupModel.cpp" />
+    <ClCompile Include="Source\Powerups\PowerupService.cpp" />
     <ClCompile Include="Source\Powerups\PowerupView.cpp" />
     <ClCompile Include="Source\Sound\SoundService.cpp" />
     <ClCompile Include="Source\Time\TimeService.cpp" />
@@ -188,6 +191,8 @@
     <ClInclude Include="Header\Element\Bunker\BunkerView.h" />
     <ClInclude Include="Header\Element\ElementService.h" />
     <ClInclude Include="Header\Enemy\Controllers\SubZeroController.h" />
+    <ClInclude Include="Header\Enemy\Controllers\ThunderSnakeController.h" />
+    <ClInclude Include="Header\Enemy\Controllers\UFOController.h" />
     <ClInclude Include="Header\Enemy\Controllers\ZapperController.h" />
     <ClInclude Include="Header\Enemy\EnemyConfig.h" />
     <ClInclude Include="Header\Enemy\EnemyController.h" />

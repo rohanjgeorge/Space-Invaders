@@ -26,14 +26,28 @@ namespace Enemy
 		switch (type)
 		{
 		case::Enemy::EnemyType::SUBZERO:
-			if (enemy_texture.loadFromFile(subzero_texture_path))
+			if (enemy_texture.loadFromFile(Global::Config::subzero_texture_path))
 			{
 				enemy_sprite.setTexture(enemy_texture);
 				scaleEnemySprite();
 			}
 			break;
 		case::Enemy::EnemyType::ZAPPER:
-			if (enemy_texture.loadFromFile(zapper_texture_path))
+			if (enemy_texture.loadFromFile(Global::Config::zapper_texture_path))
+			{
+				enemy_sprite.setTexture(enemy_texture);
+				scaleEnemySprite();
+			}
+			break;
+		case::Enemy::EnemyType::THUNDER_SNAKE:
+			if (enemy_texture.loadFromFile(Global::Config::thunder_snake_texture_path))
+			{
+				enemy_sprite.setTexture(enemy_texture);
+				scaleEnemySprite();
+			}
+			break;
+		case::Enemy::EnemyType::UFO:
+			if (enemy_texture.loadFromFile(Global::Config::ufo_texture_path))
 			{
 				enemy_sprite.setTexture(enemy_texture);
 				scaleEnemySprite();
