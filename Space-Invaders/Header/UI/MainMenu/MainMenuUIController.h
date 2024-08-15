@@ -1,11 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../header/UI/Interface/IUIController.h"
 
 namespace UI
 {
 	namespace MainMenu
 	{
-		class MainMenuUIController
+		class MainMenuUIController : public Interface::IUIController
 		{
 		private:
 			const sf::String background_texture_path = "assets/textures/space_invaders_bg.png";
@@ -50,9 +51,10 @@ namespace UI
 		public:
 			MainMenuUIController();
 
-			void initialize();
-			void update();
-			void render();
+			void initialize() override;
+			void update() override;
+			void render() override;
+			void show() override;
 
 
 		};
