@@ -9,6 +9,7 @@
 #include "../../Header/Element/ElementService.h";
 #include "../../Header/Sound/SoundService.h";
 #include "../../header/Bullet/BulletService.h"
+#include "../../Header/Powerups/PowerupService.h"
 
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
@@ -30,11 +31,8 @@ namespace Global {
         Element::ElementService* element_service;
         Sound::SoundService* sound_service;
         Bullet::BulletService* bullet_service;
-        // - event_service: Manages event-related functionalities.
-        // - graphic_service: Handles graphics-related tasks.
-        // ..........................
-        // ..........................
-
+        Powerup::PowerupService* powerup_Service;
+        
         // Private Constructor and Destructor:
 
         // Constructor for initializing the ServiceLocator.
@@ -66,5 +64,6 @@ namespace Global {
         Element::ElementService* getElementService();
         Sound::SoundService* getSoundService();
         Bullet::BulletService* getBulletService();
+        Powerup::PowerupService* getPowerupService();
     };
 }
