@@ -2,9 +2,10 @@
 
 namespace Bullet
 {
+	using namespace Entity;
 	namespace Controller
 	{
-		LaserBulletController::LaserBulletController(BulletType type) : BulletController(type) { }
+		LaserBulletController::LaserBulletController(BulletType bullet_type, Entity::EntityType owner_type) : BulletController(bullet_type, owner_type) { }
 
 		LaserBulletController::~LaserBulletController() { }
 
