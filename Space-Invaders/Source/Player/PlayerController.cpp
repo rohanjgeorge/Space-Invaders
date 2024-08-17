@@ -144,7 +144,7 @@ namespace Player
 	{
 		if (elapsed_shield_duration > 0)
 		{
-			elapsed_shield_duration -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			elapsed_shield_duration -= Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 			if (elapsed_shield_duration <= 0)
 				disableShield();
@@ -152,7 +152,7 @@ namespace Player
 
 		if (elapsed_rapid_fire_duration > 0)
 		{
-			elapsed_rapid_fire_duration -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			elapsed_rapid_fire_duration -= Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 			if (elapsed_rapid_fire_duration <= 0)
 				disableRapidFire();
@@ -160,7 +160,7 @@ namespace Player
 
 		if (elapsed_tripple_laser_duration > 0)
 		{
-			elapsed_tripple_laser_duration -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			elapsed_tripple_laser_duration -= Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 			if (elapsed_tripple_laser_duration <= 0)
 				disableTrippleLaser();
@@ -176,7 +176,7 @@ namespace Player
 
 	void PlayerController::enableShield()
 	{
-		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::POWERUP_ENABLED);
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::POWERUP_ENABLED);
 		elapsed_shield_duration = player_model->shiled_powerup_duration;
 		player_model->setShieldState(true);
 		player_view->setPlayerHighlight(true);
@@ -184,40 +184,40 @@ namespace Player
 
 	void PlayerController::disableShield()
 	{
-		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::POWERUP_DISABLED);
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::POWERUP_DISABLED);
 		player_model->setShieldState(false);
 		player_view->setPlayerHighlight(false);
 	}
 
 	void PlayerController::enableRapidFire()
 	{
-		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::POWERUP_ENABLED);
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::POWERUP_ENABLED);
 		elapsed_rapid_fire_duration = player_model->rapid_fire_powerup_duration;
 		player_model->setRapidFireState(true);
 	}
 
 	void PlayerController::disableRapidFire()
 	{
-		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::POWERUP_DISABLED);
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::POWERUP_DISABLED);
 		player_model->setRapidFireState(false);
 	}
 
 	void PlayerController::enableTrippleLaser()
 	{
-		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::POWERUP_ENABLED);
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::POWERUP_ENABLED);
 		elapsed_tripple_laser_duration = player_model->tripple_laser_powerup_duration;
 		player_model->setTrippleFireState(true);
 	}
 
 	void PlayerController::disableTrippleLaser()
 	{
-		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::POWERUP_DISABLED);
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::POWERUP_DISABLED);
 		player_model->setTrippleFireState(false);
 	}
 
 	void PlayerController::processPlayerInput()
 	{
-		EventService* event_service = ServiceLocator::getInstance()->getEventService();
+		EventService* event_service = Global::ServiceLocator::getInstance()->getEventService();
 
 		if (event_service->pressedLeftKey() || event_service->pressedAKey())
 			moveLeft();
@@ -232,7 +232,7 @@ namespace Player
 	void PlayerController::moveLeft()
 	{
 		sf::Vector2f currentPosition = player_model->getPlayerPosition();
-		currentPosition.x -= player_model->player_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+		currentPosition.x -= player_model->player_movement_speed * Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 		currentPosition.x = std::max(currentPosition.x, player_model->left_most_position.x);
 		player_model->setPlayerPosition(currentPosition);
@@ -241,7 +241,7 @@ namespace Player
 	void PlayerController::moveRight()
 	{
 		sf::Vector2f currentPosition = player_model->getPlayerPosition();
-		currentPosition.x += player_model->player_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+		currentPosition.x += player_model->player_movement_speed * Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 		currentPosition.x = std::min(currentPosition.x, player_model->right_most_position.x);
 		player_model->setPlayerPosition(currentPosition);
@@ -251,7 +251,7 @@ namespace Player
 	{
 		if (elapsed_fire_duration >= 0)
 		{
-			elapsed_fire_duration -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			elapsed_fire_duration -= Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 		}
 	}
 
@@ -259,7 +259,7 @@ namespace Player
 	{
 		if (elapsed_freez_duration >= 0)
 		{
-			elapsed_freez_duration -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			elapsed_freez_duration -= Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 			if (elapsed_freez_duration <= 0)
 			{
