@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../header/UI/UIElement/ImageView.h"
 
 namespace Bullet
 {
     class BulletController;
-    enum class BulletType;
 
     class BulletView
     {
@@ -12,14 +12,14 @@ namespace Bullet
         const float bullet_sprite_width = 18.f;
         const float bullet_sprite_height = 18.f;
 
-        sf::RenderWindow* game_window;
-        sf::Texture bullet_texture;
-        sf::Sprite bullet_sprite;
-
         BulletController* bullet_controller;
+        UI::UIElement::ImageView* bullet_image;
 
-        void initializeImage(BulletType type);
-        void scaleImage();
+        void createUIElements();
+        void initializeImage();
+        sf::String getBulletTexturePath();
+
+        void destroy();
 
     public:
         BulletView();
@@ -28,5 +28,7 @@ namespace Bullet
         void initialize(BulletController* controller);
         void update();
         void render();
+
+        const sf::Sprite& getBulletSprite();
     };
 }
