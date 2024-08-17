@@ -1,20 +1,24 @@
-#include "../../Header/Powerups/PowerupController.h"
+#include "../../header/Powerups/PowerupController.h"
 #include "../../header/Powerups/PowerupView.h"
 #include "../../header/Powerups/PowerupModel.h"
 #include "../../header/Global/ServiceLocator.h"
+#include "../../header/Player/PlayerController.h"
 
 namespace Powerup
 {
 	using namespace Global;
+	using namespace Player;
 
-	PowerupController::PowerupController(PowerupType type) {
+	PowerupController::PowerupController(PowerupType type)
+	{
 		powerup_view = new PowerupView();
 		powerup_model = new PowerupModel(type);
 	}
 
-	PowerupController::~PowerupController() {
-		delete(powerup_view);
-		delete(powerup_model);
+	PowerupController::~PowerupController()
+	{
+		delete (powerup_view);
+		delete (powerup_model);
 	}
 
 	void PowerupController::initialize(sf::Vector2f position)
@@ -36,11 +40,12 @@ namespace Powerup
 
 	void PowerupController::onCollected()
 	{
+		applyPowerup();
 	}
 
 	void PowerupController::updatePowerupPosition()
 	{
-		sf::Vector2f currentPosition = powerup_model->getPowerupPosition();
+		sf::Vector2f currentPosition = getCollectiblePosition();
 		currentPosition.y += powerup_model->getMovementSpeed() * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 		powerup_model->setPowerupPosition(currentPosition);
@@ -66,5 +71,21 @@ namespace Powerup
 	PowerupType PowerupController::getPowerupType()
 	{
 		return powerup_model->getPowerupType();
+	}
+
+	const sf::Sprite& PowerupController::getColliderSprite()
+	{
+		return powerup_view->getPowerupSprite();
+	}
+
+	void PowerupController::onCollision(ICollider* other_collider)
+	{
+		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
+
+		if (player_controller)
+		{
+			onCollected();
+			ServiceLocator::getInstance()->getPowerupService()->destroyPowerup(this);
+		}
 	}
 }

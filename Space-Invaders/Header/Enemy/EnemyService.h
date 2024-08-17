@@ -9,25 +9,28 @@ namespace Enemy
 	class EnemyService
 	{
 	private:
+		const float spawn_interval = 2.f;
 
-		const float spawn_interval = 3.f;
-
-		std::vector <EnemyController*> enemy_list;
+		std::vector<EnemyController*> enemy_list;
+		std::vector<EnemyController*> flagged_enemy_list;
 		float spawn_timer;
 
-		void updateSpawnTime();
+		void updateSpawnTimer();
 		void processEnemySpawn();
 		EnemyType getRandomEnemyType();
 		EnemyController* createEnemy(EnemyType enemy_type);
+		void destroyFlaggedEnemies();
 		void destroy();
 
 	public:
 		EnemyService();
-		virtual ~EnemyService();
+		~EnemyService();
 
 		void initialize();
 		void update();
 		void render();
+
+		void reset();
 
 		EnemyController* spawnEnemy();
 		void destroyEnemy(EnemyController* enemy_controller);

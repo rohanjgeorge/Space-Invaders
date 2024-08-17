@@ -1,16 +1,22 @@
-#include "../../Header/Enemy/EnemyController.h"
-#include "../../Header/Enemy/EnemyView.h"
-#include "../../Header/Enemy/EnemyModel.h"
-#include "../../Header/Enemy/EnemyConfig.h"
-#include "../../Header/Global/ServiceLocator.h"
+#include "../../header/Enemy/EnemyController.h"
+#include "../../header/Enemy/EnemyView.h"
+#include "../../header/Enemy/EnemyModel.h"
+#include "../../header/Enemy/EnemyConfig.h"
+#include "../../header/Global/ServiceLocator.h"
 #include "../../header/Bullet/BulletConfig.h"
-#include <iostream>
+#include "../../header/Entity/EntityConfig.h"
+#include "../../header/Bullet/BulletController.h"
+#include "../../header/Player/PlayerController.h"
+#include "../../header/Sound/SoundService.h"
 
 namespace Enemy
 {
 	using namespace Global;
-	using namespace Time;
 	using namespace Bullet;
+	using namespace Collision;
+	using namespace Entity;
+	using namespace Player;
+	using namespace Sound;
 
 	EnemyController::EnemyController(EnemyType type)
 	{
@@ -37,7 +43,6 @@ namespace Enemy
 		updateFireTimer();
 		processBulletFire();
 		enemy_view->update();
-		handleOutOfBounds();
 	}
 
 	void EnemyController::render()
@@ -156,7 +161,7 @@ namespace Enemy
 
 		void EnemyController::updateFireTimer()
 		{
-			elapsed_fire_duration += ServiceLocator::getInstance()->getTimeService()->getDeltaTime(); //update the elapsed duration
+			elapsed_fire_duration += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 		}
 
 		void EnemyController::processBulletFire() //if elapsed duration is equal to or more than the amount of time we want to wait until firing than call the fire method.
@@ -168,4 +173,32 @@ namespace Enemy
 			}
 		}
 	
+		void EnemyController::onCollision(ICollider* other_collider)
+		{
+			BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
+			if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::ENEMY)
+			{
+				destroy();
+				return;
+			}
+
+			PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
+			if (player_controller)
+			{
+				destroy();
+				return;
+			}
+
+		}
+
+		void EnemyController::destroy()
+		{
+			ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(1);
+			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
+		}
+
+		const sf::Sprite& EnemyController::getColliderSprite()
+		{
+			return enemy_view->getEnemySprite();
+		}
 }
