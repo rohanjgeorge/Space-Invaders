@@ -295,14 +295,13 @@ namespace Player
 			FireBullet(bullet_position + player_model->third_weapon_position_offset);
 		}
 
-		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BULLET_FIRE);
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BULLET_FIRE);
 	}
 
 	void PlayerController::FireBullet(sf::Vector2f position)
 	{
 
-		ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::LASER_BULLET,
-			player_model->getEntityType(), position, Bullet::MovementDirection::UP);
+		Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::LASER_BULLET, position, Bullet::MovementDirection::UP, player_model->getEntityType());
 	}
 
 	void PlayerController::decreasePlayerLive()
