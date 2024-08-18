@@ -24,7 +24,7 @@ namespace Main {
 
 		void initialize();		// Handles game initialization.
 		void initializeVariables();
-		void showMainMenu();
+		void showSplashScreen();
 		void destroy();			// Handles cleanup tasks.
 
 	public:
