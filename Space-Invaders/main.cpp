@@ -54,6 +54,7 @@ int main()
 
     return 0;
     */
+    std::cout << "game sarted";
     GameService* game_service = new GameService(); //create object
     game_service->ignite(); // this will 'ignite' or start the flow of our game
 
