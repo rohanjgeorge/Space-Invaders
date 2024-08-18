@@ -1,6 +1,7 @@
 #include "../../header/UI/UIElement/UIView.h"
 #include "../../header/Global/ServiceLocator.h"
 #include "../../Header/Graphic/GraphicService.h"
+#include <iostream>
 
 namespace UI
 {

@@ -88,6 +88,9 @@ namespace Enemy
 
 		case::Enemy::EnemyType::UFO:
 			return new UFOController(Enemy::EnemyType::UFO);
+
+		default:
+			return nullptr;
 		}
 	}
 

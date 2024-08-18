@@ -6,6 +6,7 @@
 #include "../../header/Player/PlayerController.h"
 #include "../../header/Enemy/EnemyController.h"
 #include "../../header/Element/Bunker/BunkerController.h"
+#include <iostream>
 
 namespace Bullet
 {
@@ -17,6 +18,8 @@ namespace Bullet
 
 	BulletController::BulletController(BulletType bullet_type, EntityType owner_type)
 	{
+		auto type = bullet_type;
+		std::cout << "Construtor Bullet Type (as int): " << static_cast<int>(type) << "/"<<std::endl;
 		bullet_view = new BulletView();
 		bullet_model = new BulletModel(bullet_type, owner_type);
 	}
@@ -80,6 +83,13 @@ namespace Bullet
 
 	BulletType BulletController::getBulletType()
 	{
+		if (bullet_model == nullptr) {
+			std::cerr << "BulletModel is not initialized!" << std::endl;
+		}
+		else {
+			std::cout << "BulletModel initialized correctly." << std::endl;
+		}
+
 		return bullet_model->getBulletType();
 	}
 

@@ -44,7 +44,7 @@ namespace Enemy
             sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
 
             // Update the position to move left
-            currentPosition.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+            currentPosition.x -= horizontal_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
             currentPosition.y += vertical_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
             // Check if the enemy reached the leftmost position
@@ -68,7 +68,7 @@ namespace Enemy
             sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
 
             // Update the position to move right
-            currentPosition.x += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+            currentPosition.x += horizontal_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
             currentPosition.y += vertical_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
             // Check if the enemy reached the rightmost position
@@ -91,7 +91,7 @@ namespace Enemy
             // we spawn the bullet and pass the needed parameters
             ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::TORPEDO,
                 enemy_model->getEnemyPosition() + enemy_model->barrel_position_offset,
-                Bullet::MovementDirection::DOWN);
+                Bullet::MovementDirection::DOWN, enemy_model->getEntityType());
         }
     }
 }

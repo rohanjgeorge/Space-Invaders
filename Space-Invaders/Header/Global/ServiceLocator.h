@@ -6,10 +6,11 @@
 #include "../../Header/UI/UIService.h"
 #include "../../Header/Enemy/EnemyService.h"
 #include "../../Header/Gameplay/GameplayService.h"
-#include "../../Header/Element/ElementService.h";
-#include "../../Header/Sound/SoundService.h";
+#include "../../Header/Element/ElementService.h"
+#include "../../Header/Sound/SoundService.h"
 #include "../../header/Bullet/BulletService.h"
 #include "../../Header/Powerups/PowerupService.h"
+#include "../../Header/Collision/CollisionService.h"
 
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
@@ -32,6 +33,7 @@ namespace Global {
         Sound::SoundService* sound_service;
         Bullet::BulletService* bullet_service;
         Powerup::PowerupService* powerup_Service;
+        Collision::CollisionService* collision_service;
         
         // Private Constructor and Destructor:
 
@@ -58,12 +60,13 @@ namespace Global {
         Event::EventService* getEventService();
         Player::PlayerService* getPlayerService();
         Time::TimeService* getTimeService();
-        UI::UIService* getUIServiec();
+        UI::UIService* getUIService();
         Enemy::EnemyService* getEnemyService();
         Gameplay::GameplayService* getGameplayService();
         Element::ElementService* getElementService();
         Sound::SoundService* getSoundService();
         Bullet::BulletService* getBulletService();
         Powerup::PowerupService* getPowerupService();
+        Collision::CollisionService* getCollisionService();
     };
 }

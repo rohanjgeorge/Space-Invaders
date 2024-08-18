@@ -3,6 +3,7 @@
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Global/Config.h"
 #include "../../header/Bullet/BulletConfig.h"
+#include <iostream>
 
 namespace Bullet
 {
@@ -42,16 +43,31 @@ namespace Bullet
 
 	sf::String BulletView::getBulletTexturePath()
 	{
+		std::cout << "get bullet texture path";
 		switch (bullet_controller->getBulletType())
 		{
 		case::Bullet::BulletType::LASER_BULLET:
+			std::cout << "returning laser path";
 			return BulletConfig::laser_bullet_texture_path;
 
 		case::Bullet::BulletType::FROST_BULLET:
+			std::cout << "returning frost bullet path";
 			return BulletConfig::frost_bullet_texture_path;
 
 		case::Bullet::BulletType::TORPEDO:
+			std::cout << "returning torped path";
 			return BulletConfig::torpedo_texture_path;
+
+		default:
+			if (bullet_controller == nullptr) {
+				std::cerr << "BulletController is not initialized!" << std::endl;
+			}
+			else {
+				std::cout << "BulletController initialized correctly." << std::endl;
+			}
+			auto type = bullet_controller->getBulletType();
+			std::cout << "Bullet Type (as int): " << static_cast<int>(type) <<"/"<< std::endl;
+			return BulletConfig::laser_bullet_texture_path;
 		}
 	}
 

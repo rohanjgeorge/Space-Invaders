@@ -1,5 +1,6 @@
 #include "../../header/Sound/SoundService.h"
 #include "../../header/Global/Config.h"
+#include <iostream>
 
 namespace Sound
 {
@@ -15,6 +16,7 @@ namespace Sound
 	{
 		if (!background_music.openFromFile(Config::background_music_path)) //if this returns true then print error
 			printf("Error loading background music file");
+		
 	}
 
 	void SoundService::loadSoundFromFile()

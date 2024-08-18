@@ -8,7 +8,7 @@ namespace Bullet
 
 	const sf::String BulletConfig::frost_bullet_texture_path = "assets/textures/frost_beam.png";
 
-	sf::String BulletConfig::getBulletTexturePath(BulletType bullet_type)
+	/*sf::String BulletConfig::getBulletTexturePath(BulletType bullet_type)
 	{
 		switch (bullet_type)
 		{
@@ -21,5 +21,5 @@ namespace Bullet
 		case::Bullet::BulletType::TORPEDO:
 			return torpedo_texture_path;
 		}
-	}
+	}*/
 }
