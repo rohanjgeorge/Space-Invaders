@@ -1,19 +1,18 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../../Header/Event/EventService.h"
 #include "../../Header/Global/ServiceLocator.h"
 
 namespace Main {
 
-	using namespace Global;
-
-	enum class GameState {
+	enum class GameState
+	{
 		BOOT,
+		SPLASH_SCREEN,
 		MAIN_MENU,
-		GAMEPLAY
+		INSTRUCTIONS,
+		GAMEPLAY,
+		CREDITS,
 	};
-
-	class ServiceLocator;
 
 	class GameService
 	{
@@ -25,6 +24,7 @@ namespace Main {
 
 		void initialize();		// Handles game initialization.
 		void initializeVariables();
+		void showMainMenu();
 		void destroy();			// Handles cleanup tasks.
 
 	public:
@@ -37,6 +37,5 @@ namespace Main {
 		bool isRunning();		// Checks if the game is currently running.
 		static void setGameState(GameState new_state);
 		static GameState getGameState();
-		void showMainMenu();
 	};
 }

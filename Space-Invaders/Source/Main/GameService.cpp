@@ -72,5 +72,6 @@ namespace Main {
 	void GameService::showMainMenu()
 	{
 		setGameState(GameState::MAIN_MENU);
+		ServiceLocator::getInstance()->getUIService()->showScreen();
 	}
 }

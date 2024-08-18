@@ -50,7 +50,7 @@ namespace Enemy
             sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
 
             // Update the position to move left
-            currentPosition.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+            currentPosition.x -= horizontal_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
             // Check if the enemy reached the leftmost position
             if (currentPosition.x <= enemy_model->left_most_position.x)
@@ -73,7 +73,7 @@ namespace Enemy
             sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
 
             // Update the position to move right
-            currentPosition.x += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+            currentPosition.x += horizontal_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
             // Check if the enemy reached the rightmost position
             if (currentPosition.x >= enemy_model->right_most_position.x)
@@ -96,7 +96,7 @@ namespace Enemy
             sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
 
             // Update the position to move down
-            currentPosition.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+            currentPosition.y += horizontal_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
             // Check if the enemy reached the reference position plus vertical travel distance
             if (currentPosition.y >= enemy_model->getReferencePosition().y + vertical_travel_distance)
@@ -125,7 +125,7 @@ namespace Enemy
             // we spawn the bullet and pass the needed parameters
             ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::LASER_BULLET,
                 enemy_model->getEnemyPosition() + enemy_model->barrel_position_offset,
-                Bullet::MovementDirection::DOWN);
+                Bullet::MovementDirection::DOWN, enemy_model->getEntityType());
         }
     }
 }

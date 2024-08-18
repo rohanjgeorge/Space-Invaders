@@ -23,6 +23,6 @@ namespace Bullet
 		static const sf::String torpedo_texture_path;
 		static const sf::String frost_bullet_texture_path;
 
-		static sf::String getBulletTexturePath(BulletType bullet_type);
+		//static sf::String getBulletTexturePath(BulletType bullet_type);
 	};
 }

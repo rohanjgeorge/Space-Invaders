@@ -10,6 +10,7 @@
 #include "../../header/Powerups/PowerupController.h"
 #include "../../header/Sound/SoundService.h"
 #include "../../header/Main/GameService.h"
+#include <iostream>
 
 
 namespace Player
@@ -271,17 +272,29 @@ namespace Player
 
 	void PlayerController::processBulletFire()
 	{
-		if (elapsed_fire_duration > 0) return;
+		std::cout << "player is processing bullet/";
 
-		if (player_model->isTrippleLaserEnabled())
+		if (elapsed_fire_duration > 0) {
+			std::cout << "return without bullet";
+			return;
+		}
+
+		if (player_model->isTrippleLaserEnabled()) {
+			std::cout << "return tripple lasert";
 			FireBullet(true);
+		}
+		else {
+			std::cout << "normal fire/";
+			FireBullet(false);
+		}
 
-		else FireBullet();
-
-		if (player_model->isRapidFireEnabled())
+		if (player_model->isRapidFireEnabled()) {
+			std::cout << "rapid fire enabled";
 			elapsed_fire_duration = player_model->rapid_fire_cooldown_duration;
-
-		else elapsed_fire_duration = player_model->fire_cooldown_duration;
+		}
+		else {
+			elapsed_fire_duration = player_model->fire_cooldown_duration;
+		}
 	}
 
 	void PlayerController::FireBullet(bool b_tripple_laser)
@@ -300,7 +313,7 @@ namespace Player
 
 	void PlayerController::FireBullet(sf::Vector2f position)
 	{
-
+		std::cout << "Fire bullet position/";
 		Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::LASER_BULLET, position, Bullet::MovementDirection::UP, player_model->getEntityType());
 	}
 
