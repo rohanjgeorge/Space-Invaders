@@ -54,9 +54,11 @@ int main()
 
     return 0;
     */
-    std::cout << "game sarted";
+    std::cout << "game started";
     GameService* game_service = new GameService(); //create object
+    std::cout << "new game service";
     game_service->ignite(); // this will 'ignite' or start the flow of our game
+    std::cout << "ignited";
 
     // while the game is running we will update the game loop
     while (game_service->isRunning())

@@ -89,7 +89,9 @@ namespace Global {
 
 	ServiceLocator* ServiceLocator::getInstance()
 	{
+		std::cout << "get instance";
 		static ServiceLocator instance;
+		std::cout << "got instance";
 		return &instance;
 	}
 

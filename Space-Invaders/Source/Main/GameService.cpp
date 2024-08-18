@@ -13,6 +13,7 @@ namespace Main {
 	void GameService::initialize()
 	{
 		service_locator->initialize();
+		std::cout << "Service locator initialized";
 		initializeVariables();
 		showSplashScreen();
 	}
@@ -41,6 +42,7 @@ namespace Main {
 	void GameService::ignite()
 	{
 		service_locator = Global::ServiceLocator::getInstance();
+		std::cout << "before initialize";
 		initialize();
 	}
 
@@ -55,7 +57,7 @@ namespace Main {
 
 	void GameService::render()
 	{
-		game_window->clear(service_locator->getGraphicService()->getWindowColor());
+		game_window->clear();
 		service_locator->render();
 		game_window->display();
 	}
