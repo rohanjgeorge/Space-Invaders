@@ -11,6 +11,7 @@
 #include "../../header/Bullet/BulletService.h"
 #include "../../Header/Powerups/PowerupService.h"
 #include "../../Header/Collision/CollisionService.h"
+#include "../../Header/AnimationSystem/AnimationService.h"
 
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
@@ -34,6 +35,7 @@ namespace Global {
         Bullet::BulletService* bullet_service;
         Powerup::PowerupService* powerup_Service;
         Collision::CollisionService* collision_service;
+        Animation::AnimationService* animation_service;
         
         // Private Constructor and Destructor:
 
@@ -68,5 +70,6 @@ namespace Global {
         Bullet::BulletService* getBulletService();
         Powerup::PowerupService* getPowerupService();
         Collision::CollisionService* getCollisionService();
+        Animation::AnimationService* getAnimationService();
     };
 }

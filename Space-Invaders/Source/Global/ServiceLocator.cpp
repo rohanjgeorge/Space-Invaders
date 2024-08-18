@@ -17,6 +17,7 @@ namespace Global {
 	using namespace Bullet;
 	using namespace Powerup;
 	using namespace Collision;
+	using namespace Animation;
 
 	ServiceLocator::ServiceLocator()
 	{
@@ -32,6 +33,7 @@ namespace Global {
 		bullet_service = nullptr;
 		powerup_Service = nullptr;
 		collision_service = nullptr;
+		animation_service = nullptr;
 
 		createServices();
 	}
@@ -68,6 +70,8 @@ namespace Global {
 
 		collision_service = new CollisionService();
 
+		animation_service = new AnimationService();
+
 	}
 
 	void ServiceLocator::clearAllServices()
@@ -84,6 +88,7 @@ namespace Global {
 		delete(bullet_service);
 		delete(powerup_Service);
 		delete(collision_service);
+		delete(animation_service);
 
 	}
 
@@ -109,7 +114,7 @@ namespace Global {
 		bullet_service->initialize();
 		powerup_Service->initialize();
 		collision_service->initialize();
-
+		animation_service->initialize();
 	}
 
 	void ServiceLocator::update()
@@ -125,6 +130,7 @@ namespace Global {
 			element_service->update();
 			powerup_Service->update();
 			collision_service->update();
+			animation_service->update();
 		}
 		ui_service->update();
 	}
@@ -140,6 +146,7 @@ namespace Global {
 			bullet_service->render();
 			element_service->render();
 			powerup_Service->render();
+			animation_service->render();
 		}
 		ui_service->render();
 	}
@@ -186,5 +193,9 @@ namespace Global {
 	Collision::CollisionService* ServiceLocator::getCollisionService()
 	{
 		return collision_service;
+	}
+	Animation::AnimationService* ServiceLocator::getAnimationService()
+	{
+		return animation_service;
 	}
 }
