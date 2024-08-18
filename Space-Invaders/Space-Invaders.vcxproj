@@ -181,6 +181,7 @@
     <ClCompile Include="Source\UI\GameplayUI\GameplayUIController.cpp" />
     <ClCompile Include="Source\UI\MainMenu\MainMenuUIController.cpp" />
     <ClCompile Include="Source\UI\SplashScreen\SplashScreenUIController.cpp" />
+    <ClCompile Include="Source\UI\UIElement\AnimatedImageView.cpp" />
     <ClCompile Include="Source\UI\UIElement\ButtonView.cpp" />
     <ClCompile Include="Source\UI\UIElement\ImageView.cpp" />
     <ClCompile Include="Source\UI\UIElement\TextView.cpp" />
@@ -188,6 +189,8 @@
     <ClCompile Include="Source\UI\UIService.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\AnimationSystem\AnimationSystemConfig.h" />
+    <ClInclude Include="Header\AnimationSystem\AnimationSystemConfigData.h" />
     <ClInclude Include="Header\Bullet\BulletModel.h" />
     <ClInclude Include="Header\Bullet\BulletService.h" />
     <ClInclude Include="Header\Bullet\BulletView.h" />
@@ -237,6 +240,7 @@
     <ClInclude Include="Header\Time\TimeService.h" />
     <ClInclude Include="Header\UI\GameplayUI\GameplayUIController.h" />
     <ClInclude Include="Header\UI\SplashScreen\SplashScreenUIController.h" />
+    <ClInclude Include="Header\UI\UIElement\AnimatedImageView.h" />
     <ClInclude Include="Header\UI\UIElement\ButtonView.h" />
     <ClInclude Include="Header\UI\UIElement\ImageView.h" />
     <ClInclude Include="Header\UI\UIElement\TextView.h" />
